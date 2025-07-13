@@ -133,7 +133,7 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 px-2">
           {navigationData.buttons.map((button, index) => {
             const IconComponent = button.icon ? getIcon(button.icon) : null
-            
+
             // Define click handlers based on button text
             const handleClick = () => {
               if (button.text === "Download CV") {
