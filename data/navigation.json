@@ -1,0 +1,21 @@
+{
+  "brand": "RAYEN SAHMIM",
+  "navItems": [
+    { "href": "#home", "label": "Home" },
+    { "href": "#about", "label": "About" },
+    { "href": "#skills", "label": "Skills" },
+    { "href": "#projects", "label": "Projects" },
+    { "href": "#certificates", "label": "Certificates" },
+    { "href": "#ai-assistant", "label": "AI Assistant" },
+    { "href": "#contact", "label": "Contact" }
+  ],
+  "socialLinks": [
+    { "name": "GitHub", "icon": "Github", "url": "https://github.com/Mohamed-Adam-Jemal" },
+    { "name": "LinkedIn", "icon": "Linkedin", "url": "https://www.linkedin.com/in/Mohamed-Adam-Jemal/" },
+    { "name": "Email", "icon": "Mail", "url": "mailto:mohamed.adam.jemal@gmail.com" }
+  ],
+  "buttons": [
+    { "text": "Download CV", "icon": "Download", "type": "primary" },
+    { "text": "View Projects", "type": "outline" }
+  ]
+}
