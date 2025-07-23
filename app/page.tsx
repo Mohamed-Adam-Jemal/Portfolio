@@ -1,4 +1,5 @@
 import { Hero } from "@/components/hero"
+import Experience from "@/components/experience"
 import { About } from "@/components/about"
 import { Skills } from "@/components/skills"
 import { Projects } from "@/components/projects"
@@ -18,6 +19,7 @@ export default function Portfolio() {
         <Hero />
         <About />
         <Skills />
+        <Experience />
         <Projects />
         <Certificates />
         <AIAssistant />

@@ -61,7 +61,7 @@ export function Skills() {
           <div className="w-32 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-violet-500 mx-auto professional-line"></div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillsData.categories.map((category, index) => (
             <Card key={index} className="professional-card-hover group">
               <CardContent className="p-8">
@@ -87,28 +87,7 @@ export function Skills() {
                               {skill.name}
                             </span>
                           </div>
-                          <span className="professional-number-small">{skill.level}%</span>
-                        </div>
-                        <div className="w-full bg-gray-700 rounded-full h-3 overflow-hidden">
-                          <div
-                            className="h-3 rounded-full transition-all duration-1000 ease-out professional-progress relative overflow-hidden"
-                            style={{
-                              width: `${skill.level}%`,
-                              background:
-                                skill.name === "Next.js" ||
-                                skill.name === "Express.js" ||
-                                skill.name === "Socket.IO" ||
-                                skill.name === "Git/GitHub"
-                                  ? "linear-gradient(90deg, #6366f1, #8b5cf6)"
-                                  : `linear-gradient(90deg, ${skill.color}80, ${skill.color})`,
-                            }}
-                          >
-                            {/* Animated shine effect */}
-                            <div
-                              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 animate-pulse"
-                              style={{ animationDuration: "2s", animationDelay: `${skillIndex * 0.2}s` }}
-                            />
-                          </div>
+                          {/* <span className="professional-number-small">{skill.level}%</span> */}
                         </div>
                       </div>
                     )

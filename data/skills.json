@@ -4,28 +4,40 @@
     {
       "title": "FRONTEND",
       "skills": [
-        { "name": "React.js", "level": 90, "icon": "SiReact", "color": "#61DAFB" },
-        { "name": "Next.js", "level": 88, "icon": "SiNextdotjs", "color": "#000000" },
-        { "name": "JavaScript", "level": 85, "icon": "SiJavascript", "color": "#F7DF1E" },
-        { "name": "Tailwind CSS", "level": 92, "icon": "SiTailwindcss", "color": "#06B6D4" }
+        { "name": "React.js", "icon": "SiReact", "color": "#61DAFB" },
+        { "name": "Tailwind CSS", "icon": "SiTailwindcss", "color": "#06B6D4" },
+        { "name": "JavaScript / TypeScript", "icon": "SiJavascript", "color": "#F7DF1E" },
+        { "name": "Next.js", "icon": "SiNextdotjs", "color": "#000000" }
       ]
     },
     {
       "title": "BACKEND",
       "skills": [
-        { "name": "Node.js", "level": 88, "icon": "SiNodedotjs", "color": "#339933" },
-        { "name": "Express.js", "level": 85, "icon": "SiExpress", "color": "#000000" },
-        { "name": "Supabase", "level": 80, "icon": "SiSupabase", "color": "#3ECF8E" },
-        { "name": "Python", "level": 75, "icon": "SiPython", "color": "#3776AB" }
+        { "name": "Django / Django REST Framework", "icon": "SiDjango", "color": "#092E20" },
+        { "name": "Node.js", "icon": "SiNodedotjs", "color": "#339933" },
+        { "name": "Express.js", "icon": "SiExpress", "color": "#000000" },
+        { "name": "Python", "icon": "SiPython", "color": "#3776AB" },
+        { "name": "C/C++", "icon": "SiCplusplus", "color": "#00599C" }
       ]
     },
     {
       "title": "TOOLS & CLOUD",
       "skills": [
-        { "name": "Git/GitHub", "level": 90, "icon": "SiGithub", "color": "#181717" },
-        { "name": "Socket.IO", "level": 85, "icon": "SiSocketdotio", "color": "#010101" },
-        { "name": "Docker", "level": 70, "icon": "SiDocker", "color": "#2496ED" },
-        { "name": "Figma", "level": 85, "icon": "SiFigma", "color": "#F24E1E" }
+        { "name": "Git / GitHub", "icon": "SiGithub", "color": "#181717" },
+        { "name": "Docker", "icon": "SiDocker", "color": "#2496ED" },
+        { "name": "AWS IoT Core", "icon": "SiAmazonaws", "color": "#FF9900" },
+        { "name": "Socket.IO", "icon": "SiSocketdotio", "color": "#010101" },
+        { "name": "Figma", "icon": "SiFigma", "color": "#F24E1E" },
+        { "name": "Arduino Cloud / IoT Platforms", "icon": "SiArduino", "color": "#00979D" }
+      ]
+    },
+    {
+      "title": "ADDITIONAL",
+      "skills": [
+        { "name": "Computer Vision (YOLO, OpenCV, PyTorch)", "icon": "SiOpencv", "color": "#5C3EE8" },
+        { "name": "MQTT / HTTP / TLS / SSE", "icon": "SiMqtt", "color": "#660066" },
+        { "name": "MySQL / MongoDB", "icon": "SiMysql", "color": "#4479A1" },
+        { "name": "UI/UX & 3D Design (Figma, Blender)", "icon": "SiBlender", "color": "#F5792A" }
       ]
     }
   ]

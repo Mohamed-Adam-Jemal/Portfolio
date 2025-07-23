@@ -105,13 +105,14 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
           </div>
         )}
 
-        <Image
-          src={project.image || "/placeholder.svg"}
-          alt={project.title}
-          width={400}
-          height={300}
-          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500"
-        />
+       <Image
+        src={project.image || "/placeholder.svg"}
+        alt={project.title}
+        width={400}
+        height={300}
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
 
@@ -140,10 +141,6 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
                   borderColor: `${techColor}30`,
                 }}
               >
-                <IconComponent
-                  className="w-4 h-4 transition-all duration-300 group-hover/tech:scale-110"
-                  color={iconColor}
-                />
                 <span className="text-xs font-medium text-gray-300 group-hover/tech:text-white transition-colors">
                   {tech}
                 </span>

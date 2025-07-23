@@ -2,65 +2,60 @@
   "certificates": [
     {
       "id": 1,
-      "title": "Introduction to Generative AI",
-      "issuer": "Google Cloud (via Coursera)",
-      "date": "January 28, 2024",
-      "description": "Comprehensive course covering the fundamentals of generative AI, including how it works, different model types, and practical applications. Completed with verified certification.",
+      "title": "Meta Front-End Developer Specialization",
+      "issuer": "Meta – Coursera",
+      "date": "August 26, 2024",
+      "description": "A comprehensive program that prepares learners for a career in front-end development. Covers HTML, CSS, JavaScript, React, UI/UX, and version control using Git. Learners build responsive and accessible web applications.",
       "skills": [
-        "Generative AI",
-        "Google Cloud Platform",
-        "Machine Learning Methods",
-        "Artificial Intelligence",
-        "Application Development"
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "UI/UX Design",
+        "Git"
       ],
-      "credentialId": "UWWN2F7PYWK3",
-      "verificationUrl": "https://www.coursera.org/account/accomplishments/verify/UWWN2F7PYWK3",
-      "image": "/certificates/generative-ai-cert.jpg",
-      "duration": "1 hour",
-      "rating": "4.7/5 (7,845 evaluations)",
-      "completedBy": "Rayen Sahmim"
+      "duration": "7 months",
+      "credentialId": "Y7UPK7UYY2NR",
+      "verificationUrl": "https://www.coursera.org/account/accomplishments/specialization/Y7UPK7UYY2NR",
+      "completedBy": "Mohamed Adam Jemal"
     },
+
     {
       "id": 2,
-      "title": "Introduction to Python for Developers",
-      "issuer": "DataCamp",
-      "date": "July 4, 2025",
-      "description": "Comprehensive Python programming course for beginners covering fundamental concepts from basic syntax to advanced data structures. Completed hands-on exercises with variables, data types, control structures, and loops.",
+      "title": "Meta Back-End Developer Specialization",
+      "issuer": "Meta – Coursera",
+      "date": "October 2, 2024",
+      "description": "This specialization equips learners with the skills needed for back-end development roles. Topics include Python programming, version control, databases, Django, APIs, and deployment practices.",
       "skills": [
-        "Python Programming",
-        "Data Structures",
-        "Control Flow",
-        "Variables and Data Types",
-        "Loops and Conditionals"
+        "Python",
+        "Django",
+        "SQL",
+        "APIs",
+        "Version Control",
+        "Web Security"
       ],
-      "credentialId": "c787d5db6bb9733bd5c0ce75ca93c13e94651c00",
-      "verificationUrl": "https://www.datacamp.com/completed/statement-of-accomplishment/course/c787d5db6bb9733bd5c0ce75ca93c13e94651c00",
-      "image": "/certificates/datacamp-cert-1.jpg",
-      "duration": "3 hours",
-      "rating": "DataCamp Verified",
-      "completedBy": "Rayen Sahmim"
+      "duration": "8 months",
+      "credentialId": "7GTJ3UPQHNIC",
+      "verificationUrl": "https://www.coursera.org/account/accomplishments/specialization/7GTJ3UPQHNIC",
+      "completedBy": "Mohamed Adam Jemal"
     },
     {
       "id": 3,
-      "title": "Understanding Artificial Intelligence",
-      "issuer": "DataCamp",
-      "date": "July 5, 2025",
-      "description": "Comprehensive non-technical course exploring fundamental AI concepts and applications. Covered machine learning, deep learning, natural language processing, generative models, and AI implementation in organizations with hands-on activities.",
+      "title": "Machine Learning with Python",
+      "issuer": "IBM – Coursera",
+      "date": "November 4, 2024",
+      "description": "Introduces machine learning concepts, techniques, and algorithms using Python. Topics include supervised and unsupervised learning, regression, classification, clustering, and recommendation systems using libraries such as scikit-learn.",
       "skills": [
-        "Artificial Intelligence",
         "Machine Learning",
-        "Deep Learning",
-        "Natural Language Processing",
-        "AI Strategy",
-        "Responsible AI"
+        "Python",
+        "Supervised and Unsupervised Learning",
+        "scikit-learn",
+        "Model Evaluation"
       ],
-
-      "credentialId": "20be3a8b6fde6217018da97de93eee80c40e997c",
-      "verificationUrl": "https://www.datacamp.com/completed/statement-of-accomplishment/course/20be3a8b6fde6217018da97de93eee80c40e997c",
-      "image": "/certificates/datacamp-cert-2.jpg",
-      "duration": "2 hours",
-      "rating": "DataCamp Verified",
-      "completedBy": "Rayen Sahmim"
+      "duration": "13 hours",
+      "credentialId": "UEM6VHL9J6N6",
+      "verificationUrl": "https://www.coursera.org/account/accomplishments/verify/UEM6VHL9J6N6",
+      "completedBy": "Mohamed Adam Jemal"
     }
   ]
 }

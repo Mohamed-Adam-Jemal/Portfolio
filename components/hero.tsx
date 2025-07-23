@@ -48,7 +48,7 @@ export function Hero() {
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
-    toast.success("CV downloaded successfully! 📄✨", {
+    toast.success("CV downloaded successfully!", {
       description: "Your resume has been downloaded and is ready to view.",
       duration: 4000,
     })
@@ -80,7 +80,9 @@ export function Hero() {
 
       <div className="text-center z-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
         <div className="mb-6 sm:mb-8 lg:mb-10">
-          <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 animated-text-gradient leading-tight">{personalData.name}</div>
+          <div className="mt-10 md:mt-0 text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-6xl font-bold mb-4 sm:mb-6 animated-text-gradient leading-tight">
+            {personalData.name}
+          </div>
           <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem] professional-subtitle">
             {text}
             <span className="animate-pulse text-indigo-400">|</span>
