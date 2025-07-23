@@ -1,21 +1,25 @@
-import { Hero } from "@/components/hero"
-import Experience from "@/components/experience"
-import { About } from "@/components/about"
-import { Skills } from "@/components/skills"
-import { Projects } from "@/components/projects"
-import { Certificates } from "@/components/certificates"
-import { AIAssistant } from "@/components/ai-assistant"
-import { Contact } from "@/components/contact"
-import { Navigation } from "@/components/navigation"
-import { BackgroundEffects } from "@/components/background-effects"
-import { ScrollToTop } from "@/components/scroll-to-top"
+'use client';
+
+import { Hero } from "@/src/components/hero"
+import Experience from "@/src/components/experience"
+import StarsCanvas  from "@/src/components/Stars"
+import { About } from "@/src/components/about"
+import { Skills } from "@/src/components/skills"
+import { Projects } from "@/src/components/projects"
+import { Certificates } from "@/src/components/certificates"
+import { AIAssistant } from "@/src/components/ai-assistant"
+import { Contact } from "@/src/components/contact"
+import { Navigation } from "@/src/components/navigation"
+import { BackgroundEffects } from "@/src/components/background-effects"
+import { ScrollToTop } from "@/src/components/scroll-to-top"
 
 export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gray-900 relative overflow-hidden">
       <BackgroundEffects />
       <Navigation />
-      <main className="relative z-10">
+      <main className="relative z-10"> 
+        
         <Hero />
         <About />
         <Skills />
@@ -24,6 +28,7 @@ export default function Portfolio() {
         <Certificates />
         <AIAssistant />
         <Contact />
+        <StarsCanvas />
       </main>
       <ScrollToTop />
     </div>

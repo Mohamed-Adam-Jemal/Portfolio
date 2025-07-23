@@ -1,8 +1,8 @@
 "use server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import type { Content } from "@google/generative-ai";
-import { generateProjectPrompt, PORTFOLIO_ASSISTANT_PROMPT,  Project } from "@/lib/prompts";
-import { GenerateResponseStream } from "@/lib/utils";
+import { generateProjectPrompt, PORTFOLIO_ASSISTANT_PROMPT,  Project } from "@/src/lib/prompts";
+import { GenerateResponseStream } from "@/src/lib/utils";
 
 const generationConfig = {
   temperature: 0.7,

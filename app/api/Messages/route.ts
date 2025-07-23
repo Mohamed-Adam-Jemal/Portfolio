@@ -1,6 +1,6 @@
 import {  NextResponse , NextRequest } from "next/server";
-import connectDB from "@/lib/ConnectMongo";
-import { MessageModel } from "@/models/message";
+import connectDB from "@/src/lib/ConnectMongo";
+import { MessageModel } from "@/src/models/message";
 export async function POST(req : NextRequest) {
   try {
 
