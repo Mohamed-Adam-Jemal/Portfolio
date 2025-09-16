@@ -3,13 +3,14 @@
   "projects": [
     {
       "order": 1,
-      "title": "EcoSort – Intelligent Waste Management",
+      "title": "EcoSort – Intelligent Waste Management System",
       "description": "AI-powered waste sorting robot integrating computer vision, cloud connectivity, and robotic automation. Built using Raspberry Pi, YOLO, Django, and React for autonomous classification and remote monitoring.",
       "image": "/projects/ecosort.jpg",
       "technologies": ["Python", "YOLO", "Raspberry Pi", "Django", "React", "AWS IoT", "MySQL"],
       "github": "https://github.com/Mohamed-Adam-Jemal",
       "live": "#",
-      "featured": true
+      "featured": true,
+      "category": "IoT"
     },
     {
       "order": 2,
@@ -19,7 +20,8 @@
       "technologies": ["ESP32", "ESP-NOW", "Django", "React", "Tailwind CSS", "MySQL"],
       "github": "https://github.com/Mohamed-Adam-Jemal",
       "live": "#",
-      "featured": true
+      "featured": true,
+      "category": "IoT"
     },
     {
       "order": 3,
@@ -29,7 +31,20 @@
       "technologies": ["ESP32", "C++", "Arduino IoT Cloud", "REST API"],
       "github": "https://github.com/Mohamed-Adam-Jemal",
       "live": "#",
-      "featured": false
+      "featured": false,
+      "category": "IoT"
+    },
+    {
+      "order": 4,
+      "title": "Fork & Friends",
+      "description": "A modern web-based platform for restaurants to manage menus, orders, reservations, and customer engagement. Integrated with an AI-powered chatbot for personalized recommendations.",
+      "image": "/projects/fork-friends.png",
+      "technologies": ["Next.js", "React", "Tailwind CSS", "TypeScript", "Supabase", "Gemini API"],
+      "github": "https://github.com/Mohamed-Adam-Jemal/Fork-Friends",
+      "live": "https://fork-friends-restaurant.vercel.app",
+      "featured": true,
+      "category": "Web"
     }
+
   ]
 }

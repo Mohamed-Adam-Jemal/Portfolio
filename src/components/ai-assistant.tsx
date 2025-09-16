@@ -126,7 +126,7 @@ export function AIAssistant() {
       // Fallback to mock response
       const aiResponse: Message = {
         id: messages.length + 2,
-        text: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to contact Rayen directly at rayensahmim@gmail.com.",
+        text: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to contact Adam directly at mohamed.adam.jemal@gmail.com.",
         isUser: false,
         timestamp: new Date(),
       }
@@ -216,7 +216,7 @@ export function AIAssistant() {
       // Fallback to mock response
       const aiResponse: Message = {
         id: messages.length + 2,
-        text: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to contact Rayen directly at rayensahmim@gmail.com.",
+        text: "I apologize, but I'm having trouble connecting right now. Please try again in a moment, or feel free to contact Adam directly at mohamed.adam.jemal@gmail.com.",
         isUser: false,
         timestamp: new Date(),
       }

@@ -34,13 +34,13 @@ export function Contact() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch('/api/Messages', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          username: formData.name,
+          name: formData.name,
           email: formData.email,
           message: formData.message,
         }),
@@ -182,7 +182,7 @@ export function Contact() {
 
                 <Button 
                   type="submit" 
-                  className="w-full professional-button-primary group"
+                  className="w-full professional-button-primary group cursor-pointer"
                   disabled={isSubmitting}
                 >
                   <Send className={`h-5 w-5 mr-2 transition-transform ${isSubmitting ? 'animate-pulse' : 'group-hover:-translate-y-1'}`} />

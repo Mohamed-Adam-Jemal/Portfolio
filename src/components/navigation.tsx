@@ -19,7 +19,7 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 w-full z-100 transition-all duration-300 ${
         scrolled ? "bg-gray-900/80 backdrop-blur-md border-b border-indigo-500/30" : ""
       }`}
     >
@@ -42,7 +42,7 @@ export function Navigation() {
           </div>
 
           {/* Mobile Navigation Button */}
-          <div className="md:hidden">
+          <div className="md:hidden cursor-pointer">
             <Button variant="ghost" size="icon" className="text-white" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>

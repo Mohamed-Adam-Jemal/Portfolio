@@ -32,7 +32,9 @@ export function About() {
           <div className="space-y-4 sm:space-y-6">
             <p className="text-base sm:text-lg lg:text-xl text-gray-300 leading-relaxed">
               {personalData.about.intro.split(" ").map((word, index) => {
-                if (word.includes("full-stack") || word.includes("developer")) {
+                const keywords = ["Junior", "full-stack", "developer", "IoT", "Computer Engineering", "innovative", "solutions", "cutting-edge", "technologies"]
+                const containsKeyword = keywords.some(keyword => word.includes(keyword))
+                if (containsKeyword) {
                   return (
                     <span key={index} className="professional-highlight">
                       {word}{" "}

@@ -62,6 +62,13 @@ export function Hero() {
     }
   }
 
+  const handleClick = () => {
+    const aboutMeSection = document.getElementById("about")
+    if (aboutMeSection) {
+      aboutMeSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden py-8 sm:py-16">
       {/* Hero Spotlights */}
@@ -80,7 +87,7 @@ export function Hero() {
 
       <div className="text-center z-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
         <div className="mb-6 sm:mb-8 lg:mb-10">
-          <div className="mt-10 md:mt-0 text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-6xl font-bold mb-4 sm:mb-6 animated-text-gradient leading-tight">
+          <div className="mt-10 md:-mt-22 text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-6xl font-bold mb-4 sm:mb-6 animated-text-gradient leading-tight">
             {personalData.name}
           </div>
           <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem] professional-subtitle">
@@ -89,45 +96,27 @@ export function Hero() {
           </div>
         </div>
 
-        {/* <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10 lg:mb-12 max-w-2xl lg:max-w-3xl mx-auto leading-relaxed px-2">
-          {personalData.description.split(" ").map((word, index) => {
-            if (personalData.highlights.includes(word.toLowerCase().replace(/[.,]/g, ""))) {
-              const colorClass =
-                personalData.highlights.indexOf(word.toLowerCase().replace(/[.,]/g, "")) === 0
-                  ? "text-indigo-400"
-                  : personalData.highlights.indexOf(word.toLowerCase().replace(/[.,]/g, "")) === 1
-                    ? "text-purple-400"
-                    : "text-violet-400"
-              return (
-                <span key={index} className={`${colorClass} font-semibold`}>
-                  {word}{" "}
-                </span>
-              )
-            }
-            return word + " "
-          })}
-        </p> */}
-
         <div className="flex flex-wrap justify-center gap-3 sm:gap-4 lg:gap-6 mb-8 sm:mb-10 lg:mb-12 px-2">
           {personalData.socialLinks.map((link, index) => {
             const IconComponent = getIcon(link.icon)
-            
+
             const handleSocialClick = () => {
               window.open(link.url, '_blank', 'noopener,noreferrer')
             }
-            
-            return (
-              <Button 
-                key={index} 
-                variant="outline" 
-                size="lg" 
-                className="professional-button group text-sm sm:text-base min-w-0 flex-shrink-0"
-                onClick={handleSocialClick}
-              >
-                <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2 group-hover:rotate-12 transition-transform" />
-                <span className="hidden sm:inline">{link.name}</span>
-                <span className="sm:hidden">{link.name.split(' ')[0]}</span>
-              </Button>
+
+          return (
+            <Button 
+              key={index} 
+              variant="outline" 
+              size="lg" 
+              className="professional-button group text-sm sm:text-base min-w-0 flex-shrink-0 cursor-pointer"
+              onClick={handleSocialClick}
+            >
+              <IconComponent className="h-4 w-4 sm:h-5 sm:w-5 mr-1 sm:mr-2 group-hover:rotate-12 transition-transform" />
+              <span className="hidden sm:inline">{link.name}</span>
+              <span className="sm:hidden">{link.name.split(' ')[0]}</span>
+            </Button>
+
             )
           })}
         </div>
@@ -144,13 +133,19 @@ export function Hero() {
                 scrollToProjects()
               }
             }
-            
+
             return (
               <Button
                 key={index}
                 size="lg"
                 onClick={handleClick}
-                className={`${button.type === "primary" ? "professional-button-primary group" : "professional-button"} text-sm sm:text-base w-full sm:w-auto min-w-0`}
+                className={`
+                  ${button.type === "primary" ? "professional-button-primary group" : "professional-button"} 
+                  text-sm sm:text-base w-full sm:w-auto min-w-0 
+                  cursor-pointer 
+                  hover:scale-105 
+                  transition-transform duration-200
+                `}
                 variant={button.type === "outline" ? "outline" : "default"}
               >
                 {IconComponent && (
@@ -160,12 +155,18 @@ export function Hero() {
               </Button>
             )
           })}
+
         </div>
       </div>
 
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <ChevronDown className="h-6 w-6 sm:h-8 sm:w-8 text-indigo-400 drop-shadow-glow" />
+      <div
+        className="z-50 absolute bottom-5 sm:bottom-5 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+        onClick={handleClick}
+        title="Scroll to About Me"
+      >
+        <ChevronDown className="h-8 w-8 sm:h-10 sm:w-10 text-indigo-400 drop-shadow-glow hover:scale-110 transition-transform duration-200" />
       </div>
+
     </section>
   )
 }

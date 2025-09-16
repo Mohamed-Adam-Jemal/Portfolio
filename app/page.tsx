@@ -12,14 +12,14 @@ import { Contact } from "@/src/components/contact"
 import { Navigation } from "@/src/components/navigation"
 import { BackgroundEffects } from "@/src/components/background-effects"
 import { ScrollToTop } from "@/src/components/scroll-to-top"
+import { ShootingStars } from "@/src/components/shooting-starts";
 
 export default function Portfolio() {
   return (
     <div className="min-h-screen bg-gray-900 relative overflow-hidden">
       <BackgroundEffects />
       <Navigation />
-      <main className="relative z-10"> 
-        
+      <main className="relative z-50 px-4 sm:px-6 md:px-12 lg:px-24 xl:px-32">
         <Hero />
         <About />
         <Skills />
@@ -28,7 +28,8 @@ export default function Portfolio() {
         <Certificates />
         <AIAssistant />
         <Contact />
-        <StarsCanvas />
+        {/* <StarsCanvas /> */}
+        <ShootingStars/>
       </main>
       <ScrollToTop />
     </div>

@@ -46,6 +46,7 @@ function FloatingLaptop() {
       <Box args={[1.6, 0.08, 0.01]} position={[-0.3, -0.05, -0.8]} rotation={[-0.15, 0, 0]}>
         <meshStandardMaterial color="#ddd6fe" emissive="#ddd6fe" emissiveIntensity={0.7} />
       </Box>
+      
 
       {/* Floating Elements */}
       <Box args={[0.4, 0.4, 0.4]} position={[2, 0.8, 0.5]} rotation={[0.5, 0.5, 0]}>
@@ -81,7 +82,7 @@ function FloatingLaptop() {
 
 export function Portfolio3D() {
   return (
-    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] hidden lg:block opacity-60">
+    <div className="absolute top-4/5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-135 h-135 hidden lg:block opacity-60">
       <Canvas camera={{ position: [0, 2, 8] }}>
         <ambientLight intensity={0.8} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} color="#ffffff" />
@@ -89,7 +90,7 @@ export function Portfolio3D() {
         <pointLight position={[10, -5, 5]} intensity={0.6} color="#6366f1" />
         <pointLight position={[0, 10, 0]} intensity={0.4} color="#a855f7" />
         <FloatingLaptop />
-        <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={1.5} />
+        <OrbitControls enablePan={true} autoRotateSpeed={3} />
       </Canvas>
     </div>
   )
