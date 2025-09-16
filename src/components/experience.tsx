@@ -13,8 +13,24 @@ import { experiences } from "@/src/data/experience";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 
+type VerticalTimelineProps = {
+  children?: React.ReactNode;
+  className?: string;
+};
+
+type VerticalTimelineElementProps = {
+  children?: React.ReactNode;
+  className?: string;
+  contentStyle?: React.CSSProperties;
+  contentArrowStyle?: React.CSSProperties;
+  date?: string | React.ReactNode;
+  iconStyle?: React.CSSProperties;
+  icon?: React.ReactNode;
+};
+
+
 // Dynamically import timeline components to disable SSR
-const VerticalTimeline = dynamic(
+const VerticalTimeline = dynamic<VerticalTimelineProps>(
   () =>
     import("react-vertical-timeline-component").then(
       (mod) => mod.VerticalTimeline
@@ -22,7 +38,7 @@ const VerticalTimeline = dynamic(
   { ssr: false }
 );
 
-const VerticalTimelineElement = dynamic(
+const VerticalTimelineElement = dynamic<VerticalTimelineElementProps>(
   () =>
     import("react-vertical-timeline-component").then(
       (mod) => mod.VerticalTimelineElement
