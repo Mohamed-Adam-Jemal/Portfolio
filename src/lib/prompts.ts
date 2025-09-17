@@ -80,12 +80,13 @@ export const generatePortfolioAssistantPrompt = (): string => {
     const skills = cert.skills.join(', ');
     const verification = cert.verificationUrl ? `\n- **Verification:** ${cert.verificationUrl}` : '';
     const credentialId = cert.credentialId ? `\n- **Credential ID:** ${cert.credentialId}` : '';
+    const image = cert.image ? `\n- **Certificate Image:** ${cert.image}` : '';
     
     return `**${index + 1}. ${cert.title}**
-- **Issuer:** ${cert.issuer}
-- **Date:** ${cert.date}
-- **Description:** ${cert.description}
-- **Skills Covered:** ${skills}${credentialId}${verification}`;
+  - **Issuer:** ${cert.issuer}
+  - **Date:** ${cert.date}
+  - **Description:** ${cert.description}
+  - **Skills Covered:** ${skills}${credentialId}${verification}${image}`;
   }).join('\n\n');
 
   // Generate projects section

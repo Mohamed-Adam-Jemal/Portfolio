@@ -17,6 +17,7 @@
       "duration": "7 months",
       "credentialId": "Y7UPK7UYY2NR",
       "verificationUrl": "https://www.coursera.org/account/accomplishments/specialization/Y7UPK7UYY2NR",
+      "image": "/certifications/frontend.jpg",
       "completedBy": "Mohamed Adam Jemal"
     },
 
@@ -37,6 +38,7 @@
       "duration": "8 months",
       "credentialId": "7GTJ3UPQHNIC",
       "verificationUrl": "https://www.coursera.org/account/accomplishments/specialization/7GTJ3UPQHNIC",
+      "image": "/certifications/frontend.jpg",
       "completedBy": "Mohamed Adam Jemal"
     },
     {
@@ -55,6 +57,7 @@
       "duration": "13 hours",
       "credentialId": "UEM6VHL9J6N6",
       "verificationUrl": "https://www.coursera.org/account/accomplishments/verify/UEM6VHL9J6N6",
+      "image": "/certifications/ML.jpg",
       "completedBy": "Mohamed Adam Jemal"
     }
   ]

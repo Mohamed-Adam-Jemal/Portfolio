@@ -20,7 +20,7 @@
       "technologies": ["ESP32", "ESP-NOW", "Django", "React", "Tailwind CSS", "MySQL"],
       "github": "https://github.com/Mohamed-Adam-Jemal",
       "live": "#",
-      "featured": true,
+      "featured": false,
       "category": "IoT"
     },
     {
