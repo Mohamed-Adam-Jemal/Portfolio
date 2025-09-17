@@ -36,7 +36,7 @@ export interface Project {
 
 interface Skill {
   name: string;
-  level: number;
+  level?: number;
   icon: string;
   color: string;
 }
@@ -55,7 +55,7 @@ interface Certificate {
   skills: string[];
   credentialId: string;
   verificationUrl: string;
-  image: string;
+  image?: string;
 }
 
 // Function to generate the prompt dynamically
@@ -67,9 +67,10 @@ export const generatePortfolioAssistantPrompt = (): string => {
 
   // Generate skills section
   const skillsSection = skillCategories.map((category: SkillCategory) => {
-    const skillsList = category.skills.map((skill: Skill) => 
-      `- ${skill.name} (${skill.level}% proficiency) - Advanced ${skill.name.toLowerCase()} development`
-    ).join('\n');
+    const skillsList = category.skills.map((skill: Skill) => {
+      const proficiency = skill.level ? `(${skill.level}% proficiency)` : '';
+      return `- ${skill.name} ${proficiency} - Advanced ${skill.name.toLowerCase()} development`;
+    }).join('\n');
     
     return `**${category.title} Development:**\n${skillsList}`;
   }).join('\n\n');
