@@ -4,10 +4,10 @@ import { useEffect, useState } from "react"
 import { ChevronDown, Github, Linkedin, Mail, Download } from "lucide-react"
 import { Button } from "@/src/components/ui/button"
 import { Portfolio3D } from "./portfolio-3d"
-import personalData from "@/src/data/personal.json"
 import navigationData from "@/src/data/navigation.json"
 import { toast } from "sonner"
-
+import Image from "next/image"
+import personalData from "@/src/data/personal.json"
 export function Hero() {
   const [text, setText] = useState("")
   const fullText = personalData.title
@@ -87,7 +87,17 @@ export function Hero() {
 
       <div className="text-center z-10 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full">
         <div className="mb-6 sm:mb-8 lg:mb-10">
-          <div className="mt-10 md:-mt-22 text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-6xl font-bold mb-4 sm:mb-6 animated-text-gradient leading-tight">
+          {/* Profile Image */}
+          <div className="mt-3 flex justify-center">
+            <Image
+              src={personalData.img}
+              alt={personalData.name}
+              width={150}
+              height={150}
+              className="rounded-full object-cover border-4 border-indigo-500"
+            />
+          </div>
+          <div className="mt-3 md:-mt-5 text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-6xl font-bold mb-4 sm:mb-6 animated-text-gradient leading-tight">
             {personalData.name}
           </div>
           <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 min-h-[2rem] sm:min-h-[2.5rem] md:min-h-[3rem] professional-subtitle">
@@ -160,7 +170,7 @@ export function Hero() {
       </div>
 
       <div
-        className="z-50 absolute bottom-5 sm:bottom-5 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
+        className="z-50 absolute bottom-5 left-1/2 transform -translate-x-1/2 animate-bounce cursor-pointer"
         onClick={handleClick}
         title="Scroll to About Me"
       >

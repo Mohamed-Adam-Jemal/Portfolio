@@ -369,7 +369,7 @@ export function Projects() {
                     key={option.key}
                     onClick={() => handleFilterChange("category", option.key)}
                     disabled={isAnimating}
-                    className={`px-3 py-1 rounded-full text-xs transition-all duration-300 flex items-center space-x-1 ${
+                    className={`px-3 py-1 rounded-full text-xs transition-all duration-300 flex items-center space-x-1 cursor-pointer ${
                       categoryFilter === option.key
                         ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white"
                         : "text-gray-400 hover:text-indigo-400 hover:bg-indigo-500/10"
@@ -398,7 +398,7 @@ export function Projects() {
                   key={option.key}
                   onClick={() => handleFilterChange("sort", option.key)}
                   disabled={isAnimating}
-                  className={`px-3 py-1 rounded-full text-xs transition-all duration-300 ${
+                  className={`px-3 py-1 rounded-full text-xs transition-all duration-300 cursor-pointer ${
                     sortBy === option.key
                       ? "bg-gradient-to-r from-indigo-500 to-purple-500 text-white"
                       : "text-gray-400 hover:text-indigo-400 hover:bg-indigo-500/10"

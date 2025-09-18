@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
-import { Button } from "@/src/components/ui/button"
 import navigationData from "@/src/data/navigation.json"
+import { AnimatePresence, motion } from "framer-motion"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
@@ -42,28 +42,54 @@ export function Navigation() {
           </div>
 
           {/* Mobile Navigation Button */}
-          <div className="md:hidden cursor-pointer">
-            <Button variant="ghost" size="icon" className="text-white" onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+          <div className="md:hidden cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+            <div className="relative w-7 h-7">
+              {/* Hamburger Icon */}
+              <Menu
+                className={`absolute inset-0 h-7 w-7 text-white transition-all duration-300 ${
+                  isOpen ? "opacity-0 scale-75 rotate-90" : "opacity-100 scale-100 rotate-0"
+                }`}
+              />
+              {/* X Icon */}
+              <X
+                className={`absolute inset-0 h-7 w-7 text-white transition-all duration-300 ${
+                  isOpen ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-75 -rotate-90"
+                }`}
+              />
+            </div>
           </div>
         </div>
 
         {/* Mobile Navigation Menu */}
-        {isOpen && (
-          <div className="md:hidden bg-gray-800/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-indigo-500/30">
-            {navigationData.navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="block py-2 text-gray-300 hover:text-indigo-400 transition-colors duration-200"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
-        )}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="md:hidden bg-gray-800/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-indigo-500/30"
+            >
+              {navigationData.navItems.map((item, index) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className="block py-2 text-gray-300 hover:text-indigo-400 transition-colors duration-200"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }} // reversed animation when closing
+                  transition={{
+                    delay: index * 0.05, // slightly smaller delay for smoother closing
+                    duration: 0.3,
+                  }}
+                >
+                  {item.label}
+                </motion.a>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   )

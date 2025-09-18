@@ -164,7 +164,7 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
               <Button 
                 variant="outline" 
                 size="sm" 
-                className="professional-button-small group/btn"
+                className="professional-button-small group/btn cursor-pointer"
                 onClick={() => window.open(project.github, '_blank')}
               >
                 <Github className="h-4 w-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
@@ -203,7 +203,7 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
             <Button 
               variant="outline" 
               size="sm" 
-              className="professional-button-small group/btn"
+              className="professional-button-small group/btn cursor-pointer"
               onClick={() => window.open(project.live, '_blank')}
               disabled={project.live === '#'}
             >
@@ -217,7 +217,7 @@ export function ProjectCard({ project, sortBy }: ProjectCardProps) {
             <Button 
               variant="outline" 
               size="sm" 
-              className="professional-button-small group/btn bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border-indigo-400/50 hover:border-indigo-400 hover:from-indigo-500/30 hover:to-purple-500/30 shadow-lg shadow-indigo-500/20"
+              className="professional-button-small group/btn bg-gradient-to-r from-indigo-500/20 to-purple-500/20 border-indigo-400/50 hover:border-indigo-400 hover:from-indigo-500/30 hover:to-purple-500/30 shadow-lg shadow-indigo-500/20 cursor-pointer"
             >
               <Bot className="h-4 w-4 group-hover/btn:scale-110 transition-transform text-indigo-400" />
             </Button>

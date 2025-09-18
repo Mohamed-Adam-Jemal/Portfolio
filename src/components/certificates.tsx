@@ -71,7 +71,7 @@ export function Certificates() {
                           rel="noopener noreferrer"
                           className="
                             absolute right-3 top-3 
-                            opacity-0 group-hover:opacity-100 transition-all duration-300 
+                            opacity-100 transition-all duration-300 
                             p-2 rounded-full 
                             bg-white/10 hover:bg-white/20 
                             text-white/70 hover:text-white 
