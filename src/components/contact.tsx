@@ -138,7 +138,7 @@ export function Contact() {
 
           <Card className="professional-card-hover">
             <CardHeader>
-              <CardTitle className="text-white text-2xl readable-title flex items-center">
+              <CardTitle className="text-white text-xl sm:text-2xl readable-title flex items-center">
                 <MessageCircle className="h-6 w-6 mr-2 text-indigo-400" />
                 SEND MESSAGE
               </CardTitle>
@@ -182,10 +182,10 @@ export function Contact() {
 
                 <Button 
                   type="submit" 
-                  className="w-full professional-button-primary group cursor-pointer"
+                  className="h-10 w-fit professional-button-primary group cursor-pointer flex items-center justify-center mx-auto"
                   disabled={isSubmitting}
                 >
-                  <Send className={`h-5 w-5 mr-2 transition-transform ${isSubmitting ? 'animate-pulse' : 'group-hover:-translate-y-1'}`} />
+                  <Send className={`h-3 w-3 transition-transform ${isSubmitting ? 'animate-pulse' : 'group-hover:-translate-y-1'}`} />
                   {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
                 </Button>
               </form>

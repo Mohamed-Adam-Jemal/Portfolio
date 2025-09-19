@@ -2,7 +2,6 @@
 
 import { Hero } from "@/src/components/hero"
 import Experience from "@/src/components/experience"
-import StarsCanvas  from "@/src/components/Stars"
 import { About } from "@/src/components/about"
 import { Skills } from "@/src/components/skills"
 import { Projects } from "@/src/components/projects"
@@ -28,7 +27,6 @@ export default function Portfolio() {
         <Certificates />
         <AIAssistant />
         <Contact />
-        {/* <StarsCanvas /> */}
         <ShootingStars/>
       </main>
       <ScrollToTop />

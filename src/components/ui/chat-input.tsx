@@ -1,4 +1,6 @@
-import React from 'react';
+"use client"
+
+import React, { useState } from 'react';
 import { Button } from '@/src/components/ui/button';
 import { Input } from '@/src/components/ui/input';
 import { Send } from 'lucide-react';
@@ -6,10 +8,10 @@ import { Send } from 'lucide-react';
 interface ChatInputProps {
   value: string;
   onChange: (value: string) => void;
-  onSend: () => void;
-  onKeyPress: (e: React.KeyboardEvent) => void;
-  placeholder: string;
-  disabled: boolean;
+  onSend: () => Promise<void> | void;
+  onKeyPress: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  disabled?: boolean;
 }
 
 export function ChatInput({ 
@@ -17,27 +19,44 @@ export function ChatInput({
   onChange, 
   onSend, 
   onKeyPress, 
-  placeholder, 
-  disabled 
+  placeholder = "Type a message...", 
+  disabled = false
 }: ChatInputProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSend = async () => {
+    if (!value.trim()) return;
+    setIsSubmitting(true);
+    try {
+      await onSend();
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2">
+    <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-2 w-full">
       <Input
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={onKeyPress}
         placeholder={placeholder}
-        className="professional-input flex-1 text-sm sm:text-base"
+        className="professional-input flex-1 text-base sm:text-lg py-2 sm:py-3 px-4 sm:px-5" 
         autoComplete="off"
-        disabled={disabled}
+        disabled={disabled || isSubmitting}
+        aria-label="Chat input"
       />
-      <Button
-        onClick={onSend}
-        disabled={!value.trim() || disabled}
-        className="professional-button-primary w-full sm:w-auto h-9 sm:h-10"
+      <Button 
+        onClick={handleSend}
+        disabled={!value.trim() || disabled || isSubmitting}
+        className="h-10 w-fit mt-2 sm:mt-0 sm:w-auto professional-button-primary group flex items-center justify-center gap-2 px-4 cursor-pointer"
       >
-        <Send className="h-3 w-3 sm:h-4 sm:w-4" />
-        <span className="sm:hidden ml-2">Send</span>
+        <Send 
+          className={`h-4 w-4 transition-transform ${
+            isSubmitting ? 'animate-spin' : 'group-hover:-translate-y-1'
+          }`} 
+        />
+        {isSubmitting ? 'SENDING...' : 'SEND MESSAGE'}
       </Button>
     </div>
   );
