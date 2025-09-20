@@ -1,11 +1,9 @@
-import robocareIcon from "@/src/assets/robocare.png";
-import bcsgLogo from "@/src/assets/bcsg-logo.png";
 
 export const experiences = [
   {
     title: "IoT Developer",
     company_name: "RoboCare",
-    icon: robocareIcon,
+    icon: "/experiences/robocare.png",
     iconBg: "#383E56",
     date: "Jul 2025 - Present",
     points: [
@@ -16,7 +14,7 @@ export const experiences = [
   {
     title: "Research Assistant",
     company_name: "Bristol Cyber Security Group, University of Bristol",
-    icon: bcsgLogo,
+    icon: "/experiences/bcsg-logo.png",
     iconBg: "#E6DEDD",
     date: "Feb 2025 - May 2025",
     points: [
