@@ -287,54 +287,54 @@ export function ProjectAIDialog({ project, children }: ProjectAIDialogProps) {
       <DialogTrigger asChild>
         {children}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md md:max-w-3xl w-full h-[600px] bg-gray-900 border-gray-800 overflow-hidden">
-        <DialogHeader>
-          <DialogTitle className="text-white text-xl font-bold flex items-center gap-2 break-words">
-            <Bot className="h-6 w-6 text-indigo-400 flex-shrink-0" />
-            <span className="break-words">Ask AI about {project.title}</span>
-            <Sparkles className="h-5 w-5 text-purple-400 flex-shrink-0" />
-          </DialogTitle>
-        </DialogHeader>
-        
-        <div className="flex flex-col h-[520px] space-y-4 overflow-hidden">
-          {/* Chat Messages */}
-          <div className="flex-1 min-h-0 overflow-hidden">
-            <ChatMessages 
-              ref={chatContainerRef}
-              messages={messages}
-              isTyping={isTyping}
-            />
-          </div>
+      <DialogContent className="sm:max-w-md md:max-w-3xl w-full h-[80vh] max-h-[90vh] bg-gray-900 border-gray-800 overflow-hidden">
+  <DialogHeader>
+    <DialogTitle className="text-white text-xl font-bold flex items-center gap-2 break-words">
+      <Bot className="h-6 w-6 text-indigo-400 flex-shrink-0" />
+      <span className="break-words">Ask AI about {project.title}</span>
+      <Sparkles className="h-5 w-5 text-purple-400 flex-shrink-0" />
+    </DialogTitle>
+    </DialogHeader>
 
-          {/* Quick Questions */}
-          {messages.length === 1 && (
-            <div className="space-y-2 flex-shrink-0 max-w-full overflow-hidden">
-              <p className="text-xs sm:text-sm text-gray-400 break-words">Quick questions:</p>
-              <div className="flex flex-wrap gap-1.5 sm:gap-2 max-w-full overflow-hidden">
-                {quickQuestions.map((question, index) => (
-                  <QuickQuestionButton 
-                    key={index} 
-                    question={question} 
-                    index={index}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
+    <div className="flex flex-col flex-1 h-full space-y-4 overflow-hidden">
+      {/* Chat Messages */}
+      <div className="flex-1 min-h-0 overflow-y-auto">
+        <ChatMessages 
+          ref={chatContainerRef}
+          messages={messages}
+          isTyping={isTyping}
+        />
+      </div>
 
-          {/* Input */}
-          <div className="flex-shrink-0 overflow-hidden">
-            <ChatInput
-              value={inputValue}
-              onChange={setInputValue}
-              onSend={handleSendMessage}
-              onKeyPress={handleKeyPress}
-              placeholder={`Ask me anything about ${project.title}...`}
-              disabled={isTyping}
-            />
+      {/* Quick Questions */}
+      {messages.length === 1 && (
+        <div className="space-y-2 flex-shrink-0 max-w-full overflow-hidden">
+          <p className="text-xs sm:text-sm text-gray-400 break-words">Quick questions:</p>
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 max-w-full overflow-hidden">
+            {quickQuestions.map((question, index) => (
+              <QuickQuestionButton 
+                key={index} 
+                question={question} 
+                index={index}
+              />
+            ))}
           </div>
         </div>
-      </DialogContent>
+      )}
+
+      {/* Input */}
+      <div className="flex-shrink-0 overflow-hidden">
+        <ChatInput
+          value={inputValue}
+          onChange={setInputValue}
+          onSend={handleSendMessage}
+          onKeyPress={handleKeyPress}
+          placeholder={`Ask me anything about ${project.title}...`}
+          disabled={isTyping}
+        />
+      </div>
+    </div>
+  </DialogContent>
     </Dialog>
   )
 }

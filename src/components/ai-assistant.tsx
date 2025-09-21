@@ -233,7 +233,7 @@ export function AIAssistant() {
 
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
-          <MetallicTitle className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
+          <MetallicTitle className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
             <span className="flex items-center justify-center gap-2 sm:gap-3">
               <Sparkles className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 text-indigo-400" />
               <span className="text-center">{aiData.title}</span>

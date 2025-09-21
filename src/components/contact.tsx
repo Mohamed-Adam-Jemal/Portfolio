@@ -80,7 +80,7 @@ export function Contact() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-16">
-          <MetallicTitle className="text-5xl md:text-6xl font-bold mb-6">GET IN TOUCH</MetallicTitle>
+          <MetallicTitle className="text-4xl md:text-5xl font-bold mb-6">GET IN TOUCH</MetallicTitle>
           <div className="w-32 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-violet-500 mx-auto professional-line"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto mt-6">
             {personalData.contact.description.split(" ").map((word, index) => {
@@ -99,7 +99,7 @@ export function Contact() {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-8">
             <div>
-              <h3 className="text-3xl font-bold mb-6 text-white readable-title">LET'S CONNECT</h3>
+              <h3 className="text-2xl font-bold mb-6 text-white readable-title">LET'S CONNECT</h3>
               <p className="text-gray-300 mb-8 text-lg">{personalData.contact.connectMessage}</p>
             </div>
 

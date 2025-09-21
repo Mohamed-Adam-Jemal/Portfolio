@@ -111,7 +111,7 @@ const Experience: React.FC = () => {
     <>
       <motion.div variants={textVariant()}>
         <div className="text-center mb-16">
-          <MetallicTitle className="text-5xl md:text-6xl font-bold mb-6 neon-title">
+          <MetallicTitle className="text-4xl md:text-5xl font-bold mb-6 neon-title">
             Professional Experience
           </MetallicTitle>
           <div className="w-32 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-violet-500 mx-auto professional-line"></div>

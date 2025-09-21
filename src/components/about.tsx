@@ -24,7 +24,7 @@ export function About() {
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-10 sm:mb-12 lg:mb-16">
-          <MetallicTitle className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">ABOUT ME</MetallicTitle>
+          <MetallicTitle className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">ABOUT ME</MetallicTitle>
           <div className="w-24 sm:w-28 lg:w-32 h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-violet-500 mx-auto professional-line"></div>
         </div>
 
