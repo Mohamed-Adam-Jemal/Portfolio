@@ -73,7 +73,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="py-20 px-4 bg-gray-800/20 relative">
+    <section id="contact" className="pt-20 pb-8 px-4 bg-gray-800/20 relative">
       {/* Section Spotlights */}
       <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-radial from-indigo-500/15 via-purple-500/8 to-transparent rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-radial from-violet-500/12 via-indigo-500/6 to-transparent rounded-full blur-3xl"></div>
