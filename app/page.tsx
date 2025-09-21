@@ -12,6 +12,7 @@ import { Navigation } from "@/src/components/navigation"
 import { BackgroundEffects } from "@/src/components/background-effects"
 import { ScrollToTop } from "@/src/components/scroll-to-top"
 import { ShootingStars } from "@/src/components/shooting-starts";
+import  Education  from "@/src/components/education";
 
 export default function Portfolio() {
   return (
@@ -25,6 +26,7 @@ export default function Portfolio() {
         <Experience />
         <Projects />
         <Certificates />
+        <Education />
         <AIAssistant />
         <Contact />
         <ShootingStars/>

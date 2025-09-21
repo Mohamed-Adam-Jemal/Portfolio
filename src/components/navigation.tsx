@@ -28,7 +28,7 @@ export function Navigation() {
           <div className="text-2xl font-bold professional-brand">{navigationData.brand}</div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8">
             {navigationData.navItems.map((item) => (
               <a
                 key={item.href}
@@ -42,7 +42,7 @@ export function Navigation() {
           </div>
 
           {/* Mobile Navigation Button */}
-          <div className="md:hidden cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+          <div className="lg:hidden cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
             <div className="relative w-7 h-7">
               {/* Hamburger Icon */}
               <Menu
@@ -68,7 +68,7 @@ export function Navigation() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-gray-800/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-indigo-500/30"
+              className="lg:hidden bg-gray-800/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-indigo-500/30"
             >
               {navigationData.navItems.map((item, index) => (
                 <motion.a

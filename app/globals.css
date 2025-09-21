@@ -455,3 +455,8 @@ html {
   background: linear-gradient(to bottom, #4f46e5, #7c3aed);
 }
 
+.hash-span {
+  display: block;
+  position: relative;
+  scroll-margin-top: 3.5rem; 
+}
