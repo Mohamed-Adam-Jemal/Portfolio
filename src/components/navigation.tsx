@@ -10,59 +10,64 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("#home")
 
-  // Custom smooth scroll function
+  // Simple, compatible scroll function
   const smoothScroll = (target: string) => {
     const element = document.querySelector(target)
     if (!element) return
 
     const headerOffset = 8 // adjust for navbar height
-    const elementPosition = element.getBoundingClientRect().top
-    const offsetPosition = elementPosition + window.scrollY - headerOffset
+    const elementPosition = element.getBoundingClientRect().top + window.scrollY
+    const offsetPosition = elementPosition - headerOffset
 
-    const startPosition = window.scrollY
-    const distance = offsetPosition - startPosition
-    const duration = 700 // scroll duration in ms
-    let start: number | null = null
-
-    const step = (timestamp: number) => {
-      if (!start) start = timestamp
-      const progress = timestamp - start
-      const percent = Math.min(progress / duration, 1)
-      window.scrollTo(0, startPosition + distance * percent)
-      if (progress < duration) window.requestAnimationFrame(step)
+    // Use native smooth scrolling with fallback
+    if ('scrollBehavior' in document.documentElement.style) {
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    } else {
+      // Fallback for older browsers
+      window.scrollTo(0, offsetPosition)
     }
-
-    window.requestAnimationFrame(step)
   }
 
   // Detect scroll for navbar background & active section
   useEffect(() => {
-    let timeout: NodeJS.Timeout
+    let ticking = false
 
     const handleScroll = () => {
-      if (timeout) clearTimeout(timeout)
-      timeout = setTimeout(() => {
-        setScrolled(window.scrollY > 50)
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50)
 
-        const sections = navigationData.navItems.map((item) =>
-          document.querySelector(item.href)
-        ) as HTMLElement[]
+          // Find active section
+          const sections = navigationData.navItems
+            .map((item) => ({
+              id: item.href,
+              element: document.querySelector(item.href) as HTMLElement
+            }))
+            .filter(section => section.element)
 
-        const scrollPos = window.scrollY + 100 // offset for navbar height
-        for (const section of sections) {
-          if (
-            section &&
-            section.offsetTop <= scrollPos &&
-            section.offsetTop + section.offsetHeight > scrollPos
-          ) {
-            setActiveSection(`#${section.id}`)
-            break
+          const scrollPos = window.scrollY + 100
+
+          // Find the current section in view
+          let currentSection = "#home"
+          for (const section of sections) {
+            const { element } = section
+            if (element.offsetTop <= scrollPos && 
+                element.offsetTop + element.offsetHeight > scrollPos) {
+              currentSection = section.id
+            }
           }
-        }
-      }, 50) // debounce scroll for performance
+          
+          setActiveSection(currentSection)
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
@@ -99,7 +104,7 @@ export function Navigation() {
               >
                 {item.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ${
                     activeSection === item.href
                       ? "w-full"
                       : "w-0 group-hover:w-full"
@@ -110,23 +115,24 @@ export function Navigation() {
           </div>
 
           {/* Mobile Navigation Button */}
-          <div
-            className="lg:hidden cursor-pointer"
+          <button
+            className="lg:hidden cursor-pointer p-2 -m-2"
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle navigation menu"
           >
-            <div className="relative w-7 h-7">
+            <div className="relative w-6 h-6">
               <Menu
-                className={`absolute inset-0 h-7 w-7 text-white transition-all duration-300 ${
+                className={`absolute inset-0 h-6 w-6 text-white transition-all duration-300 ${
                   isOpen ? "opacity-0 scale-75 rotate-90" : "opacity-100 scale-100 rotate-0"
                 }`}
               />
               <X
-                className={`absolute inset-0 h-7 w-7 text-white transition-all duration-300 ${
+                className={`absolute inset-0 h-6 w-6 text-white transition-all duration-300 ${
                   isOpen ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-75 -rotate-90"
                 }`}
               />
             </div>
-          </div>
+          </button>
         </div>
       </div>
 
@@ -134,11 +140,11 @@ export function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="lg:hidden absolute left-0 right-0 top-full bg-gray-800/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-indigo-500/30"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="lg:hidden absolute left-4 right-4 top-full bg-gray-800/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-indigo-500/30 shadow-xl"
           >
             {navigationData.navItems.map((item, index) => (
               <motion.a
@@ -149,17 +155,17 @@ export function Navigation() {
                   smoothScroll(item.href)
                   setIsOpen(false)
                 }}
-                className={`block py-2 transition-colors duration-200 ${
+                className={`block py-3 px-2 transition-colors duration-200 rounded-md ${
                   activeSection === item.href
-                    ? "text-indigo-400"
-                    : "text-gray-300 hover:text-indigo-400"
+                    ? "text-indigo-400 bg-indigo-500/10"
+                    : "text-gray-300 hover:text-indigo-400 hover:bg-gray-700/30"
                 }`}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -10 }}
                 transition={{
                   delay: index * 0.05,
-                  duration: 0.3,
+                  duration: 0.2,
                 }}
               >
                 {item.label}
