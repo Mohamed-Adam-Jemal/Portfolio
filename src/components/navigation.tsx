@@ -10,6 +10,8 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("#home")
 
+  const NAVBAR_HEIGHT = 80 // adjust according to your navbar height
+
   // Detect scroll for navbar background & active section
   useEffect(() => {
     const handleScroll = () => {
@@ -19,7 +21,7 @@ export function Navigation() {
         document.querySelector(item.href)
       ) as HTMLElement[]
 
-      const scrollPos = window.scrollY + 100 // offset for navbar height
+      const scrollPos = window.scrollY + NAVBAR_HEIGHT + 20 // offset for active section detection
       for (const section of sections) {
         if (
           section &&
@@ -36,13 +38,24 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Smooth scroll behavior
+  // Optional: Set default smooth scrolling for all anchor clicks
   useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth"
     return () => {
       document.documentElement.style.scrollBehavior = "auto"
     }
   }, [])
+
+  // Programmatic scroll to handle mobile offset
+  const handleNavClick = (href: string) => {
+    const target = document.querySelector(href) as HTMLElement
+    if (target) {
+      const yOffset = -NAVBAR_HEIGHT // offset for fixed navbar
+      const y = target.getBoundingClientRect().top + window.scrollY + yOffset
+      window.scrollTo({ top: y, behavior: "smooth" })
+    }
+    setIsOpen(false) // close mobile menu
+  }
 
   return (
     <nav
@@ -64,7 +77,10 @@ export function Navigation() {
             {navigationData.navItems.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleNavClick(item.href)
+                }}
                 className={`relative group transition-colors duration-200 ${
                   activeSection === item.href
                     ? "text-indigo-400"
@@ -91,16 +107,12 @@ export function Navigation() {
             <div className="relative w-7 h-7">
               <Menu
                 className={`absolute inset-0 h-7 w-7 text-white transition-all duration-300 ${
-                  isOpen
-                    ? "opacity-0 scale-75 rotate-90"
-                    : "opacity-100 scale-100 rotate-0"
+                  isOpen ? "opacity-0 scale-75 rotate-90" : "opacity-100 scale-100 rotate-0"
                 }`}
               />
               <X
                 className={`absolute inset-0 h-7 w-7 text-white transition-all duration-300 ${
-                  isOpen
-                    ? "opacity-100 scale-100 rotate-0"
-                    : "opacity-0 scale-75 -rotate-90"
+                  isOpen ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-75 -rotate-90"
                 }`}
               />
             </div>
@@ -108,7 +120,7 @@ export function Navigation() {
         </div>
       </div>
 
-      {/* Mobile Navigation Menu (absolute below navbar) */}
+      {/* Mobile Navigation Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -121,8 +133,10 @@ export function Navigation() {
             {navigationData.navItems.map((item, index) => (
               <motion.a
                 key={item.href}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleNavClick(item.href)
+                }}
                 className={`block py-2 transition-colors duration-200 ${
                   activeSection === item.href
                     ? "text-indigo-400"
