@@ -10,58 +10,67 @@ export function Navigation() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState("#home")
 
-  const NAVBAR_HEIGHT = 80 // adjust according to your navbar height
+  // Custom smooth scroll function
+  const smoothScroll = (target: string) => {
+    const element = document.querySelector(target)
+    if (!element) return
+
+    const headerOffset = 8 // adjust for navbar height
+    const elementPosition = element.getBoundingClientRect().top
+    const offsetPosition = elementPosition + window.scrollY - headerOffset
+
+    const startPosition = window.scrollY
+    const distance = offsetPosition - startPosition
+    const duration = 700 // scroll duration in ms
+    let start: number | null = null
+
+    const step = (timestamp: number) => {
+      if (!start) start = timestamp
+      const progress = timestamp - start
+      const percent = Math.min(progress / duration, 1)
+      window.scrollTo(0, startPosition + distance * percent)
+      if (progress < duration) window.requestAnimationFrame(step)
+    }
+
+    window.requestAnimationFrame(step)
+  }
 
   // Detect scroll for navbar background & active section
   useEffect(() => {
+    let timeout: NodeJS.Timeout
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      if (timeout) clearTimeout(timeout)
+      timeout = setTimeout(() => {
+        setScrolled(window.scrollY > 50)
 
-      const sections = navigationData.navItems.map((item) =>
-        document.querySelector(item.href)
-      ) as HTMLElement[]
+        const sections = navigationData.navItems.map((item) =>
+          document.querySelector(item.href)
+        ) as HTMLElement[]
 
-      const scrollPos = window.scrollY + NAVBAR_HEIGHT + 20 // offset for active section detection
-      for (const section of sections) {
-        if (
-          section &&
-          section.offsetTop <= scrollPos &&
-          section.offsetTop + section.offsetHeight > scrollPos
-        ) {
-          setActiveSection(`#${section.id}`)
-          break
+        const scrollPos = window.scrollY + 100 // offset for navbar height
+        for (const section of sections) {
+          if (
+            section &&
+            section.offsetTop <= scrollPos &&
+            section.offsetTop + section.offsetHeight > scrollPos
+          ) {
+            setActiveSection(`#${section.id}`)
+            break
+          }
         }
-      }
+      }, 50) // debounce scroll for performance
     }
 
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  // Optional: Set default smooth scrolling for all anchor clicks
-  useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth"
-    return () => {
-      document.documentElement.style.scrollBehavior = "auto"
-    }
-  }, [])
-
-  // Programmatic scroll to handle mobile offset
-  const handleNavClick = (href: string) => {
-    const target = document.querySelector(href) as HTMLElement
-    if (target) {
-      const yOffset = -NAVBAR_HEIGHT // offset for fixed navbar
-      const y = target.getBoundingClientRect().top + window.scrollY + yOffset
-      window.scrollTo({ top: y, behavior: "smooth" })
-    }
-    setIsOpen(false) // close mobile menu
-  }
-
   return (
     <nav
       className={`fixed top-0 w-full z-60 transition-all duration-300 ${
         scrolled
-          ? "bg-gray-900/80 backdrop-blur-md border-b border-indigo-500/30"
+          ? "bg-gray-900/80 backdrop-blur-md border-b border-indigo-500/30 shadow-lg"
           : ""
       }`}
     >
@@ -77,19 +86,20 @@ export function Navigation() {
             {navigationData.navItems.map((item) => (
               <a
                 key={item.href}
+                href={item.href}
                 onClick={(e) => {
                   e.preventDefault()
-                  handleNavClick(item.href)
+                  smoothScroll(item.href)
                 }}
                 className={`relative group transition-colors duration-200 ${
                   activeSection === item.href
-                    ? "text-indigo-400"
+                    ? "text-indigo-400 scale-105"
                     : "text-gray-300 hover:text-indigo-400"
                 }`}
               >
                 {item.label}
                 <span
-                  className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ${
+                  className={`absolute -bottom-1 left-0 h-1 bg-gradient-to-r from-indigo-500 to-purple-500 transition-all duration-300 ${
                     activeSection === item.href
                       ? "w-full"
                       : "w-0 group-hover:w-full"
@@ -124,18 +134,20 @@ export function Navigation() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
+            initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
             className="lg:hidden absolute left-0 right-0 top-full bg-gray-800/95 backdrop-blur-md rounded-lg mt-2 p-4 border border-indigo-500/30"
           >
             {navigationData.navItems.map((item, index) => (
               <motion.a
                 key={item.href}
+                href={item.href}
                 onClick={(e) => {
                   e.preventDefault()
-                  handleNavClick(item.href)
+                  smoothScroll(item.href)
+                  setIsOpen(false)
                 }}
                 className={`block py-2 transition-colors duration-200 ${
                   activeSection === item.href
